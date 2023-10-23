@@ -1,0 +1,17 @@
+---
+- hosts: all
+  vars:
+    - http_port: 8888
+  tasks:
+    - include_tasks: ./install.yml
+    - include_tasks: ./conf.yml
+    - include_tasks: ./start.yml
+  handlers:
+    - name: restart httpd
+      systemd:
+        name: httpd
+        state: restarted
+    - name: restart php-fpm
+      systemd:
+        name: php-fpm
+        state: restarted
