@@ -1,0 +1,10 @@
+---
+- name: Server start
+  service:
+    state: started
+    enabled: yes
+    name: "{{ item }}"
+  with_items:
+      - httpd
+      - mariadb
+      - php-fpm
